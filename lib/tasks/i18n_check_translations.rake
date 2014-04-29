@@ -1,4 +1,5 @@
 require 'i18n_check_translations'
+require 'rake'
 
 desc "Check your locales for consistency and missing translations"
 namespace :i18n do
