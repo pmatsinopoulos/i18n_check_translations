@@ -1,6 +1,7 @@
 # I18nCheckTranslations
 
-TODO: Write a gem description
+It can help you find out which translations are missing from your Rails translations files.
+So, it is basically a development utility.
 
 ## Installation
 
@@ -18,7 +19,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Try on the command line:
+
+    rake i18n:check[en,nl]
+
+It will generate the file `i18n_check_translations.csv` with all the `en` (English) keys found in your translation files
+that reside in the directory tree `config/locales`. For each key, will hold the translation in English, the translation in `nl`,
+or a string starting from `translation missing` if the translation is missing, and the file that the translation is/was supposed
+to be.
+
+If you try:
+
+    rake i18n:check[en,nl,true]
+
+it will raise a `StandardError` exception when it will find a case in which the translation is missing.
+
+If you try:
+
+    rake i18n:check[en,nl,false,filename]
+
+it will generate the file with name `filename` and save the results in it.
+
+If you try:
+
+    rake i18n::check[en]
+
+or, in order words, if you omit the destination translation, task will run once for every available locale and will generate
+a corresponding file. For example, if your available locales (excluding English in the example) were `:nl` and `:gr` you
+would get the output in `i18n_check_translations-nl.csv` and in `i18n_check_translations-gr.csv`.
 
 ## Contributing
 
