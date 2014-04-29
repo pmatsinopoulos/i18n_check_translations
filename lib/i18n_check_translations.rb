@@ -1,5 +1,5 @@
 require "i18n_check_translations/version"
-require 'i18n_check_translations.rake'
+load 'i18n_check_translations.rake'
 require 'csv'
 
 module I18nCheckTranslations

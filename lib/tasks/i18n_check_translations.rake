@@ -14,7 +14,7 @@ namespace :i18n do
     check_on_locale = :all if check_on_locale.blank?
     check_on_locale = check_on_locale.to_sym
 
-    filename = File.join(Rails.root, 'check_localizations_results.csv') if filename.nil?
+    filename = File.join(Rails.root, 'i18n_check_translations.csv') if filename.nil?
 
     if check_on_locale == :all
       I18n.available_locales.select {|al| al != basic_locale}.each do |dest_locale|
