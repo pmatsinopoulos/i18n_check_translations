@@ -48,6 +48,27 @@ or, in order words, if you omit the destination translation, task will run once 
 a corresponding file. For example, if your available locales (excluding English in the example) were `:nl` and `:gr` you
 would get the output in `i18n_check_translations-nl.csv` and in `i18n_check_translations-gr.csv`.
 
+### If you are using RSpec
+
+...And you want your specs to check for missing translations and fail for each key missing:
+
+1. Add the following to your `spec_helper`
+
+    require 'i18n_check_translations_rspec'
+
+2. Write a `spec` file with the following content:
+
+(assuming that you want to check against english basic locale)
+
+    require 'spec_helper'
+
+    describe 'Check for missing translations' do
+      I18nCheckTranslations::RSpec.check_for_missing_translations(self, :en)
+    end
+
+This will automatically create one example for each english key and will fail for those keys that are missing translation
+in any of the available locales (that are different to the basic locale given).
+
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/i18n_check_translations/fork )
