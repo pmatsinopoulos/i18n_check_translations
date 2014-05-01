@@ -1,6 +1,8 @@
 require "i18n_check_translations/version"
 load 'i18n_check_translations.rake'
 require 'csv'
+require 'i18n'
+require 'i18n/backend/fallbacks'
 
 module I18nCheckTranslations
   # @param basic_locale {Symbol} e.g.: :en, :nl, :gr
