@@ -69,6 +69,18 @@ would get the output in `i18n_check_translations-nl.csv` and in `i18n_check_tran
 This will automatically create one example for each english key and will fail for those keys that are missing translation
 in any of the available locales (that are different to the basic locale given).
 
+Or even better:
+
+    require 'spec_helper'
+
+    describe 'Check for missing translations' do
+      I18n.available_locales.each do |basic_locale|
+        I18nCheckTranslations::RSpec.check_for_missing_translations(self, basic_locale)
+      end
+    end
+
+because this will do a full check for all the locales that you application supports.
+
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/i18n_check_translations/fork )
